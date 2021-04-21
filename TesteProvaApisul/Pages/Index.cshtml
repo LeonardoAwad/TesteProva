@@ -1,0 +1,118 @@
+﻿@page
+@model IndexModel
+@using TesteProvaApisul.Pages.classes;
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="text-uppercase">Sistema de controle de elevadores</h1>
+
+    <div class="row justify-content-around pt-5">
+        <div class="col-5" style="border: solid">
+            <h4 class="font-weight-bold">Andar menos utilizado pelos usuários: </h4><h4>@Model.gestao.andarMenosUtilizado</h4>
+            <h4 class="font-weight-bold">Elevador mais frequentado: </h4> <h4>@Model.gestao.elevadorMaisFrequentado</h4>
+            <h4 class="font-weight-bold">Período que se encontra maior fluxo: </h4> <h4>@Model.gestao.periodoMaiorFluxo</h4>
+        </div>
+        <div class="col-5" style="border: solid">
+            <h4 class="font-weight-bold">Elevador menos frequentado: </h4> <h4>@Model.gestao.elevadorMenosFrequentado</h4>
+            <h4 class="font-weight-bold">Período que se encontra menor fluxo: </h4> <h4>@Model.gestao.periodoMenorFluxo</h4>
+            <h4 class="font-weight-bold">Período de maior utilização do conjunto de elevadores: </h4> <h4>@Model.gestao.periodoMaiorConjuntoElevadores</h4>
+        </div>
+    </div>
+    @*<h2>andar menos utilizado pelos usuários = @Model.gestao.andarMenosUtilizado</h2>
+    <h2>elevador mais frequentado = @Model.gestao.elevadorMaisFrequentado</h2>
+    <h2>período que se encontra maior fluxo @Model.gestao.periodoMaiorFluxo</h2>
+    <h2>elevador menos frequentado @Model.gestao.elevadorMenosFrequentado</h2>
+    <h2>período que se encontra menor fluxo @Model.gestao.periodoMenorFluxo</h2>
+    <h2>período de maior utilização do conjunto de elevadores @Model.gestao.periodoMaiorConjuntoElevadores</h2>*@
+    @*<h2>Qual o percentual de uso de cada elevador com relação a todos os serviços prestados</h2>*@
+
+    <div class="row">
+        <div class=" col-12 pt-5">
+            <h2 class="text-uppercase">Percentual do Andar</h2>
+            <div>
+                <div class="row justify-content-center">
+
+
+
+                    @for (int i = 0; i < @Model.gestao.percentual[0].nome.Count; i++)
+                    {
+                        <div class="col-3 col-sm-2 col-lg-1 " style="  height: 400px; border-bottom: solid;">
+                            <div class="d-flex align-content-end flex-wrap h-100 justify-content-center">
+                                <h4>@Model.gestao.percentual[0].porcentagem[i]%</h4>
+                                <div class="w-100" style="height: @Model.gestao.percentual[0].porcentagem[i]%; background-color: seagreen; max-height: 300px;">
+
+                                </div>
+                                <h4>Andar @Model.gestao.percentual[0].nome[i]</h4>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class=" col-12 pt-5">
+            <h2 class="text-uppercase">Percentual do Elevador</h2>
+            <div>
+                <div class="row justify-content-center">
+
+
+
+                    @for (int i = 0; i < @Model.gestao.percentual[1].nome.Count; i++)
+                    {
+                        <div class="col-3 col-sm-3 col-lg-2 " style="  height: 400px; border-bottom: solid;">
+                            <div class="d-flex align-content-end flex-wrap h-100 justify-content-center">
+                                <h4>@Model.gestao.percentual[1].porcentagem[i]%</h4>
+                                <div class="w-100" style="height: @Model.gestao.percentual[1].porcentagem[i]%; background-color: #9e989b; max-height: 300px;">
+
+                                </div>
+                                <h4>Elevador @Model.gestao.percentual[1].nome[i]</h4>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class=" col-12 pt-5">
+            <h2 class="text-uppercase">Percentual do Período</h2>
+            <div>
+                <div class="row justify-content-center">
+
+
+
+                    @for (int i = 0; i < @Model.gestao.percentual[2].nome.Count; i++)
+                    {
+                        <div class="col-3 col-sm-3 col-lg-2 " style="  height: 400px; border-bottom: solid;">
+                            <div class="d-flex align-content-end flex-wrap h-100 justify-content-center">
+                                <h4>@Model.gestao.percentual[2].porcentagem[i]%</h4>
+                                <div class="w-100" style="height: @Model.gestao.percentual[2].porcentagem[i]%; background-color: #c2c33c; max-height: 300px;">
+
+                                </div>
+                                <h4>Período @Model.gestao.percentual[2].nome[i]</h4>
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
